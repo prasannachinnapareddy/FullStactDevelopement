@@ -1,0 +1,80 @@
+<HTML>
+
+        <HEAD>
+        
+            <TITLE>About Us Page of ShowOnWheels</TITLE>
+            <LINK type="text/css" rel="stylesheet" href="ExternalStylesheet\homestylesheet.css" />
+        <script>
+          function getdata()
+          {
+            var name=document.getElementById("name").value;
+           var dob=document.getElementById("dob").value;
+           var movie=document.getElementById("movie").value;
+           var st=document.getElementById("st").value;
+           var price=document.getElementById("price").value;
+           var nt=document.getElementById("nt").value;
+           var tp=document.getElementById("tp").value;
+           alert("name :" +name+"\n date of bookings :"+dob+"\n movie :"+movie+"\n show timings :"+st+"\n price :"+price+"\n no of tickets :"+nt+"\n total price :"+tp);
+          }
+        </script>
+        </HEAD>
+        
+        <BODY>
+        
+            <DIV id="mainDivContainer" style="position: relative; width: 100%; margin-top: 0px; margin-bottom: 0px;">
+        
+                <DIV style="width: 960px;  margin-top: 5px; margin-left: auto; margin-right: auto">
+        
+                            <DIV style="width: 960px; height:80px;">
+        
+                                    <IMG id="logo" src="images/images/logo.png" width="500" height="100">
+        
+                         
+                    <DIV id="topnav" style="float:left;width: 960px; height: 20px; word-spacing: 5px; font-size: 90%; padding-left:60px; padding-top: 6px; white-space: nowrap; text-align:left; background-color: black;">
+                            <NAV>
+                    
+                     <A href="home.html">Home</A> |
+                                <A href="aboutus.html">About Us</A> |
+        
+                                <A href="contactus.html">Contact Us</A> |
+        
+                                <A href="upcomingmovies.html">Upcoming Movies</A> |
+        
+                          </NAV>
+           
+                   </DIV>
+                  
+                  
+                   <form>
+                     <header>Book Your Tickets Online</header>
+
+                      Name            : <input type="text" id="name" name="name"/> <br/>
+                     
+                      Date of Booking : <input type="date" id="dob" name="dob" /><br/>
+                     
+                      Movie           :<select id="movie" name="movie">
+                            <option value="Select">Select</option>
+                            <option value="movie1">movie1</option>
+                            <option value="movie2">movie2</option>
+                            <option value="movie3">movie3</option>
+                          </select></br>
+                   
+                          Show Timings          :<select id="st" name="st">
+                                <option value="Select">Select</option>
+                                <option value="10AM">10</option>
+                                <option value="2PM">2</option>
+                                <option value="6PM">6</option>
+                                <option value="10PM">6</option>
+                              </select></br>
+                     <b>Class :</b><input type="radio" id="class" name="firstclass" value="firstclass">Firstclass</br>
+                          <input type="radio" id="class" nmae="secondclass" value="secondclass"> Secondclass</br>
+                          <input type="radio" id="class" name="thirdclass" value="platform"> Other </br> 
+                          Price     :<input type="text" id="price" name="price"/> <br/>
+                          Number of Tickets     :<input type="text" id="nt" name="nt"/> <br/>
+                          Total Price   : <input type="text" id="tp" name="tp"/> <br/>
+                          <input type="submit" onclick="getdata();" value="Submit">
+                          <input type="reset" onclick="alert('eneter details')"value="Reset">
+                       </form>
+
+                </BODY>
+                </HTML>
