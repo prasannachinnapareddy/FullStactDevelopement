@@ -1,0 +1,78 @@
+<html>
+    <body>
+        <p>Hii Everyone</p>
+        <div contenteditable=true>Wait</div>
+        <div>BSNL</div>
+        <div><strong>hii</strong></div><br>
+        <div>First Div</div><br>
+        <v>Hello</v><br>
+        <div></div><br>
+        <div>SVVL</div>
+        <p>This is First Paragraph</p><br>
+        <div>Second Div</div><br>
+        <button>Submit</button><br>
+        <table></table>
+        <script>
+           var div=document.querySelector('div');
+            div.style.color='pink';
+            div.style.fontSize='50px';
+            var para=document.querySelectorAll('p');
+            for(let p of para)
+            {
+                p.style.color='orange';
+                p.style.fontSize='50px';
+            } 
+            var btn=document.querySelector('button');
+            btn.addEventListener('click',f)
+            function f()
+            {
+                alert('Hii');
+            }
+            btn.removeEventListener('click',f);
+            var stag=document.createElement('v');
+            var vtag=document.querySelector('v');
+            vtag.style.color='red';
+            vtag.style.fontSize='50px';
+            var paragraph=document.querySelector('v');
+            var strong=document.createElement('strong');
+            strong.textContent='Saketh';
+            paragraph.appendChild(strong);
+            paragraph.removeChild(strong);
+           var em=document.createElement('em');
+            var strong=document.querySelector('strong');
+            var div1=document.querySelector('div');
+            em.textContent='oyy!';
+            div1.replaceChild(em,strong);
+            var strong = document.querySelector('strong');
+            var copy = strong.cloneNode(true);
+            var div2 = document.querySelector('div');
+            div2.appendChild(copy);
+           var em=document.createElement('em');
+            var strong=document.querySelector('strong');
+            var div1=document.querySelector('div');
+            em.textContent='oyy!';
+            div1.insertBefore(em,strong);
+            var em=document.createElement('em');
+            var table = document.querySelector("table");
+            var df = document.createDocumentFragment();
+            for(var i=0; i<5; i++)
+            {
+            var td = document.createElement("td");
+            var tr = document.createElement("tr");
+            td.textContent = i;
+            tr.appendChild(td)
+            df.appendChild(tr);
+            }
+           table.appendChild(df);
+            var style = getComputedStyle(document.querySelector('div'));
+            alert(style.width);
+            var div = document.querySelector('div');
+            div.setAttribute('contenteditable', '')
+            var div = document.querySelector('div');
+            alert(div.getAttribute('contenteditable'))
+            var div = document.querySelector('div');
+            alert(div.removeAttribute('contenteditable'))
+
+        </script>
+    </body>
+</html>

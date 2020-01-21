@@ -1,0 +1,17 @@
+<html> 
+   
+   <head> 
+      <title>Movie</title> 
+   </head>
+   <body>
+      <script type = "text/javascript"> 
+         function movie(title, director, price){  
+            this.title = title;  
+            this.director = director; 
+            this.price =price; 
+         }  
+         var movie = new movie("AA", "Trivikram",100);    
+         document.write("movie.toSource() is : "+ movie.toSource());
+      </script> 
+   </body>
+</html>  
