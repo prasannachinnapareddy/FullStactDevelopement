@@ -1,0 +1,3 @@
+<app-child [msgFromParent]="message"></app-child>
+<app-child (msgFromChild)="setmessage($event)"></app-child>
+{{msgFromChild}}
