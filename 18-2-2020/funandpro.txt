@@ -1,0 +1,62 @@
+delimiter $$
+create procedure p1(in a integer)
+begin
+if a%2=0 then
+select 'eve no';
+else
+select 'odd no';
+end if;
+end $$
+delimiter;
+
+set @n=23;
+callp1(@n);
+
+delimiter $$
+create procedure p3(in dno int)
+begin
+declare cnt int;
+select count(*) into cnt from customers where cust_id=dno;
+select cnt;
+end $$
+delimiter;
+
+delimiter $$
+create procedure p4(in dnm varchar(20),out cnt integer)
+begin
+select count(*) into cnt from customers where cust_id=(select cust_id from orders where name=dnm);
+end $$
+delimiter;
+set @dn=10
+call p4('hr',@dn);
+delimiter $$
+
+create function f3(id int) returns varchar(20)
+begin
+declare nm varchar(20);
+select cust_name into nm from customers where cust_id=id;
+return nm;
+end $$
+delimiter ;
+set @name=f1(2);
+select @name;
+delimiter $$
+
+drop procedure if exists pro1 $$
+create procedure pro1(in c_id int,out e_salary int,out d_id int)
+begin
+select cust_id into d_id from customers where cust_id=c_id;
+select order_id into e_salary from orders where order_id=c_id;
+end $$
+delimiter ;
+
+call pro1(101,@e_salary,@d_id);
+select @e_salary,@d_id;
+delimiter $$
+create trigger newtgr
+after delete
+on empl for each row
+begin
+insert into empldel values(old.id,old.name);
+end $$
+delimiter;
