@@ -186,3 +186,6 @@ Spring Profile
 MicroServices
 ## Day (4-3-2020)
 IntegrationTesting
+## Day (5-3-2020)
+Ribbon 
+Zuul API GateWay
