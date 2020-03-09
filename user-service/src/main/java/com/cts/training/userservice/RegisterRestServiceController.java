@@ -2,6 +2,8 @@
   
   import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +20,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 
   @CrossOrigin(origins="*")
   @RestController 
-  
   public class RegisterRestServiceController 
   {
   
 	  @Autowired 
 	  RegisterDAO registerDAO;
+	  
+	  Logger logger = LoggerFactory.getLogger(this.getClass()); 
 	  
 	  @Autowired
 	  RegisterService registerService;
@@ -31,7 +34,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 	  @Autowired 
 	  JavaMailSender javaMailSender;
   
-	  @GetMapping("/userAll")
+	  @GetMapping("/registers")
 	  public ResponseEntity<?>getallusers()
 	  {
 			List<Register> list = registerService.getAllUsers();
@@ -46,32 +49,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 		}
 	 
 	  @GetMapping("/userById/{id}")
-		public ResponseEntity<Register> getById(@PathVariable int id){
+		public ResponseEntity<Register> getById(@PathVariable int id)
+	  	{
 			Register register = registerService.getUserById(id);
 			return new ResponseEntity<Register>(register,HttpStatus.OK);
 		}
 	  
 	  @DeleteMapping("/deleteUser/{id}")
-		public void delete(@PathVariable int id) {
+		public void delete(@PathVariable int id)
+	  	{
 			registerService.delete(id);
 		}
 
 	  @PutMapping("/updateUser")
-		public ResponseEntity<Register> update(@RequestBody Register users){
-			registerService.updateUser(users);
-			return new ResponseEntity<Register>(users,HttpStatus.OK);
+		public ResponseEntity<Register> update(@RequestBody Register register)
+	  	{
+			registerService.updateUser(register);
+			return new ResponseEntity<Register>(register,HttpStatus.OK);
 		}
 
-	  @RequestMapping(value = "/userAll",method = RequestMethod.POST)
-		public ResponseEntity<Register> save(@RequestBody Register register){
+	  @RequestMapping(value = "/registers",method = RequestMethod.POST)
+		public ResponseEntity<Register> save(@RequestBody Register register)
+	  	{
 			registerService.insert(register);
 			return new ResponseEntity<Register>(register,HttpStatus.CREATED);
 		}
 	  
 	  @RequestMapping(value="/activate",method= RequestMethod.PUT)
-		public ResponseEntity<String> activate(@RequestBody String email){
+		public ResponseEntity<String> activate(@RequestBody String email)
+	  	{
 			registerService.activate(email);
 			return new ResponseEntity<String>(email,HttpStatus.CREATED);
 		}
+	  
+	  @GetMapping(value="/login")
+	  	public ResponseEntity<?> login()
+	  	{
+	  		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+	  	}
 	 
  }

@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 //import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "reg")
+@Table(name = "registers")
 @XmlRootElement(name="item")
 public class Register implements Serializable
 {
@@ -22,15 +22,34 @@ public class Register implements Serializable
 	@GeneratedValue
 	private int id;
 	private String name;
+	private String uname;
 	private String email;
 	private String psw;
 	private String rpsw;
 	private String active="no";
+	private String userType="ROLE_USER";
+	
 	@Transient
 	private String regstatus;
 	public Register() {
 		super();
 	}
+	
+	
+	public Register(int id, String name, String uname, String email, String psw, String rpsw, String active,String userType, String regstatus) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.uname = uname;
+		this.email = email;
+		this.psw = psw;
+		this.rpsw = rpsw;
+		this.active = active;
+		this.userType = userType;
+		this.regstatus = regstatus;
+	}
+
+
 	public Register(int id, String name, String email, String psw, String rpsw) {
 		super();
 		this.id = id;
@@ -39,7 +58,6 @@ public class Register implements Serializable
 		this.psw = psw;
 		this.rpsw = rpsw;
 	}
-	
 	public String getRegstatus() {
 		return regstatus;
 	}
@@ -83,10 +101,25 @@ public class Register implements Serializable
 	public void setActive(String active) {
 		this.active = active;
 	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Register [id=" + id + ", name=" + name + ", email=" + email + ", psw=" + psw + ", rpsw=" + rpsw
-				+ "]";
+		return "Register [id=" + id + ", name=" + name + ", uname=" + uname + ", email=" + email + ", psw=" + psw
+				+ ", rpsw=" + rpsw + ", active=" + active + ", regstatus=" + regstatus + "]";
 	}
 	
 }
